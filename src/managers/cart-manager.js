@@ -15,12 +15,12 @@ class CartManager {
             const data = await fs.readFile(this.path, "utf-8");
             this.carts = JSON.parse(data); 
             if(this.carts.length > 0) {
-                //Verifico si hay por lo menos un carrito creado. 
+                //Ver si hay por lo menos un carrito creado. 
                 this.ultId = Math.max(...this.carts.map(cart => cart.id))
-                //Utilizo el metodo map para crear un nuevo array que solo obtenga los ids del carrito y con Math.max obtengo el mayor. 
+                //Con map crear un nuevo array que solo obtenga los ids del carrito y con Math.max obtengo el mayor. 
             }
         } catch (error) {
-            //Si no existe el archivo, lo voy a crear: 
+            //Si no existe el archivo, crearlo: 
             await this.guardarCarritos(); 
         }
     }
@@ -29,8 +29,7 @@ class CartManager {
         await fs.writeFile(this.path, JSON.stringify(this.carts, null, 2)); 
     }
 
-    ///////// Los métodos que me piden las consignas: 
-
+    // Crea el carrito
     async crearCarrito() {
         const nuevoCarrito = {
             id: ++this.ultId,
@@ -39,11 +38,12 @@ class CartManager {
 
         this.carts.push(nuevoCarrito); 
 
-        //Guardamos el array en el archivo: 
+        //Guardar el array en el archivo: 
         await this.guardarCarritos(); 
         return nuevoCarrito;
     }
 
+    // Buscar Carrito por ID
     async getCarritoById(cartId) {
         const carrito = this.carts.find(c => c.id === cartId); 
 
@@ -52,17 +52,17 @@ class CartManager {
         }
 
         return carrito; 
-        //Aca tambien pueden usar un try catch. 
+        //Se puede usar un try catch. 
     }
 
     async agregarProductoAlCarrito(cartId, productId, quantity = 1) {
         const carrito = await this.getCarritoById(cartId); 
 
-        //Verifico si el producto ya existe en el carrito: 
+        //Ver si el producto ya existe en el carrito: 
         const existeProducto = carrito.products.find(p => p.product === productId); 
 
-        //Si el producto ya esta agregado al carrito, le aumento la cantidad. 
-        //Si el producto todavia no se agrego lo pusheo. 
+        //Si existe en el carrito, le aumento la cantidad. 
+        //En caso contrario. 
         if(existeProducto) {
             existeProducto.quantity += quantity; 
         } else {

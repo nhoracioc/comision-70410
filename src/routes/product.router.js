@@ -9,7 +9,7 @@ const manager = new ProductManager("./src/data/productos.json");
 //Ruta para listar todos los productos: 
 
 router.get("/", async (req, res) => {
-    //Me guardo el query limit: 
+    //Guardar el query limit: 
     let limit = req.query.limit; 
 
     const productos = await manager.getProducts(); 

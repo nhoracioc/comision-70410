@@ -15,22 +15,22 @@ class ProductManager {
 
     async addProduct({title, description, price, img, code, stock}) {
 
-        //Yo puedo leer el archivo y guardarme el array con los productos: 
+        //Yo puedo leer el archivo y guardar el array con los productos: 
         const arrayProductos = await this.leerArchivo(); 
 
-        //Validamos que se agregaron todos los campos: 
+        //Validamos todos los campos: 
         if(!title || !description || !price || !img || !code || !stock ) {
-            console.log("Todos los campos son obligatorios, maldita rata de dos patas! Moriras!"); 
+            console.log("Todos los campos son obligatorios!"); 
             return; 
         }
 
         //Validamos que el código sea único: 
         if(arrayProductos.some(item => item.code === code)) {
-            console.log("El codigo debe ser unico, tantas carreras y te decidiste por la que no tenes talento!!"); 
+            console.log("El codigo debe ser unico!"); 
             return; 
         }
 
-        //Si pasamos las validaciones, ahora podemos crear el objeto: 
+        //Si es valido, crear el objeto: 
         const nuevoProducto = {
             id: ++ProductManager.ultId,
             title, 
@@ -41,10 +41,10 @@ class ProductManager {
             stock
         }
 
-        //Una vez que lo puedo crear lo pusheo al array: 
+        //Una vez creado agregarlo al array: 
         arrayProductos.push(nuevoProducto); 
 
-        //Una vez que agregamos el nuevo producto al array, guardamos el array al archivo: 
+        //Guardar el array actualizado en el archivo: 
         await this.guardarArchivo(arrayProductos); 
     }
 
@@ -54,7 +54,7 @@ class ProductManager {
     }
 
     async getProductById(id) {
-        //Primero leo el archivo y genero el array: 
+        //Leer el archivo y generar el array: 
         const arrayProductos = await this.leerArchivo();
         const producto = arrayProductos.find(item => item.id === id);
 
