@@ -23,9 +23,10 @@ router.get("/", async (req, res) => {
 
 //Ruta para retornar un producto por id: 
 
-router.get("/products/:pid",  async (req, res) => {
+router.get("/:pid",  async (req, res) => {
     let id = req.params.pid; 
     const productoBuscado = await manager.getProductById(parseInt(id)); 
+    console.log("Producto buscado:", productoBuscado);
     res.send(productoBuscado); 
 })
 
