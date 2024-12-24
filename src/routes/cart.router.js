@@ -16,9 +16,11 @@ router.post("/", async (req, res) => {
     }
 })
 
-//Listamos los productos que pertenecen al carrito: 
 
-router.get("/carts/:cid", async (req, res) => {
+//Listamos los productos que pertenecen al carrito: 
+// router.get("/carts/:cid", async (req, res) => {
+router.get("/:cid", async (req, res) => {
+   
     const cartId = parseInt(req.params.cid); 
 
     try {
@@ -30,8 +32,9 @@ router.get("/carts/:cid", async (req, res) => {
 })
 
 //Agregar productos al carrito: 
+//router.post("/:cid/carts/:pid", async (req, res) => {
 
-router.post("/:cid/carts/:pid", async (req, res) => {
+router.post("/:cid/product/:pid", async (req, res) => {
     const cartId = parseInt(req.params.cid); 
     const productId = req.params.pid; 
     const quantity = req.body.quantity || 1; 

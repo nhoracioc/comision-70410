@@ -13,14 +13,17 @@ class ProductManager {
 
     }
 
-    async addProduct({title, description, price, img, code, stock}) {
+    //id, title, description, price, status, img, code, stock, category
+
+    async addProduct({title, description, price, status, img, code, stock, category}) {
 
         //Yo puedo leer el archivo y guardar el array con los productos: 
         const arrayProductos = await this.leerArchivo(); 
 
         //Validamos todos los campos: 
-        if(!title || !description || !price || !img || !code || !stock ) {
-            console.log("Todos los campos son obligatorios!"); 
+        // if(!title || !description || !price || !img || !code || !stock ) {
+        if(!title || !description || !price || !status || !code || !stock || !category) {
+            console.log("Todos los campos son obligatorios, a excepción de la imagen!"); 
             return; 
         }
 
