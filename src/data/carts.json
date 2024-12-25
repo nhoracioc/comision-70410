@@ -9,6 +9,10 @@
       {
         "product": "3",
         "quantity": 1
+      },
+      {
+        "product": "10",
+        "quantity": 2
       }
     ]
   },
@@ -17,7 +21,7 @@
     "products": [
       {
         "product": "2",
-        "quantity": 1
+        "quantity": 3
       },
       {
         "product": "7",
@@ -29,7 +33,7 @@
       },
       {
         "product": "1",
-        "quantity": 1
+        "quantity": 3
       }
     ]
   },
@@ -42,7 +46,7 @@
     "products": [
       {
         "product": "10",
-        "quantity": 1
+        "quantity": 3
       },
       {
         "product": "7",
