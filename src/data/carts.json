@@ -46,11 +46,11 @@
     "products": [
       {
         "product": "10",
-        "quantity": 3
+        "quantity": 4
       },
       {
         "product": "7",
-        "quantity": 2
+        "quantity": 3
       }
     ]
   },

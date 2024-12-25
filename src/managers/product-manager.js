@@ -1,27 +1,18 @@
-//const fs = require("fs").promises; 
-//con ESModules: import {promises as fs} from "fs"; 
 import {promises as fs} from "fs";
-
-//ACTIVIDAD 2: 
 
 class ProductManager {
     static ultId = 0; 
     constructor(path) {
         this.products = []; 
         this.path = path; 
-        //La clase debe contar con una variable this.path, el cual se inicializará desde el constructor y debe recibir la ruta a trabajar desde el momento de generar su instancia.
 
     }
 
-    //id, title, description, price, status, img, code, stock, category
-
     async addProduct({title, description, price, status, img, code, stock, category}) {
-
         //Yo puedo leer el archivo y guardar el array con los productos: 
         const arrayProductos = await this.leerArchivo(); 
 
         //Validamos todos los campos: 
-        // if(!title || !description || !price || !img || !code || !stock ) {
         if(!title || !description || !price || !status || !code || !stock || !category) {
             console.log("Todos los campos son obligatorios, a excepción de la imagen!"); 
             return; 
@@ -68,9 +59,7 @@ class ProductManager {
         }
     }
 
-    //Se pueden armar unos métodos auxiliares que guarden el archivo y recuperen los datos: 
-
-    async guardarArchivo(arrayProductos) {
+     async guardarArchivo(arrayProductos) {
         try {
             await fs.writeFile(this.path, JSON.stringify(arrayProductos, null, 2))
         } catch (error) {
@@ -89,5 +78,5 @@ class ProductManager {
     }
 }
 
-//module.exports = ProductManager; 
+
 export default ProductManager; 
