@@ -13,7 +13,7 @@ class ProductManager {
         const arrayProductos = await this.leerArchivo(); 
 
         //Validamos todos los campos: 
-        if(!title || !description || !price || !status || !code || !stock || !category) {
+        if(!title || !description || !price || !status || img || !code || !stock || !category) {
             console.log("Todos los campos son obligatorios, a excepción de la imagen!"); 
             return; 
         }
