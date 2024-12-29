@@ -122,13 +122,24 @@
   },
   {
     "id": 12,
-    "title": "Nuevo 2",
-    "description": "Nuevo Producto 2.",
+    "title": "Nuevo 2 - Actualizado",
+    "description": "Nuevo Producto 2 - Actualizado.",
     "price": 25.99,
     "status": true,
-    "img": "https://example.com/images/nuevo-2.jpg",
-    "code": "NEW-002",
-    "stock": 100,
+    "img": "https://example.com/images/nuevo-2-updated.jpg",
+    "code": "NUP-002",
+    "stock": 120,
+    "category": "Nuevos - Actualizado"
+  },
+  {
+    "id": 13,
+    "title": "Nuevo 13",
+    "description": "Nuevo Producto 13.",
+    "price": 15.99,
+    "status": true,
+    "img": "https://example.com/images/nuevo-13.jpg",
+    "code": "NEW-013",
+    "stock": 280,
     "category": "Nuevos"
   }
 ]

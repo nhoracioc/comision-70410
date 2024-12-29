@@ -1,13 +1,14 @@
 import {promises as fs} from "fs";
 
 class ProductManager {
-    static ultId = 11; 
+    static ultId = 12; 
     constructor(path) {
         this.products = []; 
         this.path = path; 
 
     }
 
+    //Agrega un producto
     async addProduct({title, description, price, status, img, code, stock, category}) {
         //Yo puedo leer el archivo y guardar el array con los productos: 
         const arrayProductos = await this.leerArchivo(); 
@@ -44,6 +45,31 @@ class ProductManager {
         await this.guardarArchivo(arrayProductos); 
     }
 
+    //Actualiza un producto
+    async updateProduct(id, camposParaActualizar) 
+    {
+        try {
+            const productos = await this.leerArchivo(); // Método que lee el archivo JSON
+            const productoIndex = productos.findIndex(item => item.id === id);
+
+            if (productoIndex === -1) {
+                throw new Error("Producto no encontrado");
+            }
+
+            const productoActual = productos[productoIndex];
+
+            // Mantener el ID del producto sin cambios
+            const productoActualizado = { ...productoActual, ...camposParaActualizar, id: productoActual.id };
+
+            productos[productoIndex] = productoActualizado;
+            await this.guardarArchivo(productos); // Método que escribe el archivo JSON
+
+            return productoActualizado;
+        } catch (error) {
+            console.error("Error al actualizar el producto:", error);
+            throw new Error("Error al actualizar el producto");
+        }
+    }
 
     //Obtiene los productos con limitacion
     async getProducts(limit) {
@@ -56,6 +82,7 @@ class ProductManager {
         }
     }
 
+    //Obtiene un producto por ID
     async getProductById(id) {
         //Leer el archivo y generar el array: 
         const arrayProductos = await this.leerArchivo();
@@ -68,7 +95,8 @@ class ProductManager {
         }
     }
 
-     async guardarArchivo(arrayProductos) {
+    //Guarda el archivo
+    async guardarArchivo(arrayProductos) {
         try {
             await fs.writeFile(this.path, JSON.stringify(arrayProductos, null, 2))
         } catch (error) {
@@ -76,6 +104,7 @@ class ProductManager {
         }
     }
 
+    //Leer el archivo 
     async leerArchivo() {
         try {
             const respuesta = await fs.readFile(this.path, "utf-8");

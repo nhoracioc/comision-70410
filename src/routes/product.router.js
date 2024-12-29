@@ -24,8 +24,10 @@ router.get("/:pid",  async (req, res) => {
     const productoBuscado = await manager.getProductById(parseInt(id)); 
     console.log("Producto buscado:", productoBuscado);
     res.send(productoBuscado); 
-})
+});
 
+
+//Ruta para agregar un producto
 router.post("/", async (req, res) => {
     const { title, description, price, status, code, stock, category, img } = req.body;
 
@@ -49,6 +51,25 @@ router.post("/", async (req, res) => {
         res.status(201).json(productoAgregado);
     } catch (error) {
         res.status(500).json({ error: "Error al agregar el producto!" });
+    }
+});
+
+//Ruta para actualizar un producto
+router.put("/:pid", async (req, res) => {
+    const productId = parseInt(req.params.pid);
+    const { title, description, price, status, code, stock, category, img } = req.body;
+
+    if (!title && !description && !price && !code && !stock && !category && !img && status === undefined) {
+        return res.status(400).json({ error: "Al menos un campo debe ser proporcionado para actualizar el producto" });
+    }
+
+    const camposParaActualizar = { title, description, price, code, stock, category, img, status };
+
+    try {
+        const productoActualizado = await manager.updateProduct(productId, camposParaActualizar);
+        res.json(productoActualizado);
+    } catch (error) {
+        res.status(500).json({ error: "Error al actualizar el producto!" });
     }
 });
 
