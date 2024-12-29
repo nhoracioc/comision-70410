@@ -1,7 +1,7 @@
 import {promises as fs} from "fs";
 
 class ProductManager {
-    static ultId = 0; 
+    static ultId = 11; 
     constructor(path) {
         this.products = []; 
         this.path = path; 
@@ -13,7 +13,7 @@ class ProductManager {
         const arrayProductos = await this.leerArchivo(); 
 
         //Validamos todos los campos: 
-        if(!title || !description || !price || !status || img || !code || !stock || !category) {
+        if(!title || !description || !price || !status || !code || !stock || !category) {
             console.log("Todos los campos son obligatorios, a excepción de la imagen!"); 
             return; 
         }
@@ -30,9 +30,11 @@ class ProductManager {
             title, 
             description,
             price,
+            status,
             img,
             code,
-            stock
+            stock,
+            category
         }
 
         //Una vez creado agregarlo al array: 

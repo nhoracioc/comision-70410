@@ -26,4 +26,30 @@ router.get("/:pid",  async (req, res) => {
     res.send(productoBuscado); 
 })
 
+router.post("/", async (req, res) => {
+    const { title, description, price, status, code, stock, category, img } = req.body;
+
+    if (!title || !description || !price || !status || !code || !stock || !category) {
+        return res.status(400).json({ error: "Todos los campos son obligatorios, a excepción de imagen." });
+    }
+
+    const nuevoProducto = {
+        title, 
+        description,
+        price,
+        status,
+        img,
+        code,
+        stock,
+        category
+    };
+
+    try {
+        const productoAgregado = await manager.addProduct(nuevoProducto);
+        res.status(201).json(productoAgregado);
+    } catch (error) {
+        res.status(500).json({ error: "Error al agregar el producto!" });
+    }
+});
+
 export default router; 
