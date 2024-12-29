@@ -42,9 +42,16 @@ class ProductManager {
         await this.guardarArchivo(arrayProductos); 
     }
 
-    async getProducts() {
-        const arrayProductos = await this.leerArchivo(); 
-        return arrayProductos;
+
+    //Obtiene los productos con limitacion
+    async getProducts(limit) {
+        try {
+            const productos = await this.leerArchivo(); // Método que lee el archivo JSON
+            return limit ? productos.slice(0, limit) : productos;
+        } catch (error) {
+            console.error("Error al obtener los productos:", error);
+            throw new Error("Error al obtener los productos");
+        }
     }
 
     async getProductById(id) {

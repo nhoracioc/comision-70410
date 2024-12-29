@@ -5,19 +5,18 @@ const router = Router();
 import ProductManager from "../managers/product-manager.js"; 
 const manager = new ProductManager("./src/data/productos.json"); 
 
-//Ruta para listar todos los productos: 
-router.get("/", async (req, res) => {
-    //Guardar el query limit: 
-    let limit = req.query.limit; 
 
-    const productos = await manager.getProducts(); 
-    
-    if(limit) {
-        res.send(productos.slice(0, limit)); 
-    } else {
-        res.send(productos); 
+//Ruta para listar todos los productos con limitacion: 
+router.get("/", async (req, res) => {
+    try {
+        const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
+        const productos = await manager.getProducts(limit);
+        res.json(productos);
+    } catch (error) {
+        res.status(500).json({ error: "Error al obtener los productos!" });
     }
-})
+});
+
 
 //Ruta para retornar un producto por id: 
 router.get("/:pid",  async (req, res) => {
