@@ -73,4 +73,17 @@ router.put("/:pid", async (req, res) => {
     }
 });
 
+//Ruta para eliminar un producto
+router.delete("/:pid", async (req, res) => {
+    const productId = parseInt(req.params.pid);
+
+    try {
+        await manager.deleteProduct(productId);
+        res.json({ message: "Producto eliminado con éxito!" });
+    } catch (error) {
+        res.status(500).json({ error: "Error al eliminar el producto!" });
+    }
+});
+
+
 export default router; 

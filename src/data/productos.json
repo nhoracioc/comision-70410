@@ -110,17 +110,6 @@
     "category": "Ropa Deportiva"
   },
   {
-    "id": 11,
-    "title": "Nuevo 1",
-    "description": "Nuevo Producto 1.",
-    "price": 15.99,
-    "status": true,
-    "img": "https://example.com/images/nuevo-1.jpg",
-    "code": "NEW-001",
-    "stock": 200,
-    "category": "Nuevos"
-  },
-  {
     "id": 12,
     "title": "Nuevo 2 - Actualizado",
     "description": "Nuevo Producto 2 - Actualizado.",

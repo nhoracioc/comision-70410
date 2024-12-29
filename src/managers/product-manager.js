@@ -1,7 +1,7 @@
 import {promises as fs} from "fs";
 
 class ProductManager {
-    static ultId = 12; 
+    static ultId = 13; 
     constructor(path) {
         this.products = []; 
         this.path = path; 
@@ -13,7 +13,7 @@ class ProductManager {
         //Yo puedo leer el archivo y guardar el array con los productos: 
         const arrayProductos = await this.leerArchivo(); 
 
-        //Validamos todos los campos: 
+        //Validamos todos los campos menos la imagen: 
         if(!title || !description || !price || !status || !code || !stock || !category) {
             console.log("Todos los campos son obligatorios, a excepción de la imagen!"); 
             return; 
@@ -71,6 +71,24 @@ class ProductManager {
         }
     }
 
+    //Eliminar un producto por ID
+    async deleteProduct(id) {
+        try {
+            const productos = await this.leerArchivo(); // Método que lee el archivo JSON
+            const index = productos.findIndex(item => item.id === id);
+
+            if (index === -1) {
+                throw new Error("Producto no encontrado");
+            }
+
+            productos.splice(index, 1);
+            await this.guardarArchivo(productos); // Método que escribe el archivo JSON
+        } catch (error) {
+            console.error("Error al eliminar el producto:", error);
+            throw new Error("Error al eliminar el producto");
+        }
+    }
+
     //Obtiene los productos con limitacion
     async getProducts(limit) {
         try {
@@ -111,7 +129,7 @@ class ProductManager {
             const arrayProductos = JSON.parse(respuesta); 
             return arrayProductos; 
         } catch (error) {
-            console.log("Tenemos un error al leer el archivo"); 
+            console.log("Error al leer el archivo"); 
         }
     }
 }
