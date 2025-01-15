@@ -4,12 +4,18 @@ const router = Router();
 import ProductManager from "../managers/product-manager.js";
 const manager = new ProductManager("./src/data/productos.json"); 
 
-//Entregar una lista de todos los productos
+
+// Entregar una lista de todos los productos
 router.get("/products", async (req, res) => {
-    //Pueden usar un try catch  y retornar un status 500 en caso de no acceder al manager y a los datos. 
-    const productos = await manager.getProducts(); 
-    res.render("home", {productos});
-})
+    try {
+        const productos = await manager.getProducts();
+        res.render("home", { productos });
+    } catch (error) {
+        console.error("Error al obtener los productos:", error);
+        res.status(500).send("Error al obtener los productos");
+    }
+});
+
 
 //Lista de Productos con websockets: 
 router.get("/realtimeproducts", (req, res) => {

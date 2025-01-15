@@ -44,17 +44,15 @@ io.on("connection", async (socket) => {
   //Enviamos el array de productos al cliente que se conectó. 
   socket.emit("productos", await manager.getProducts()); 
 
-  //Agregamos producto: 
+  //Agregar un producto: 
   socket.on("agregarProducto", async (producto) => {
     await manager.addProduct(producto); 
     io.sockets.emit("productos", await manager.getProducts())
   })
 
-  //Eliminamos producto: 
-
+  //Eliminar un producto: 
   socket.on("eliminarProducto", async (id) => {
-    // console.log(id); 
-    //Llamar al manager y usan el metodo de eliminar. 
+    //Usar el metodo de eliminar del manager. 
     await manager.deleteProduct(id);
 
     //Despues de eliminar enviar nuevamente el listado de productos actualizado. 

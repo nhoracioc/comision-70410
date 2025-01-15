@@ -121,17 +121,6 @@
     "category": "Nuevos - Actualizado"
   },
   {
-    "id": 13,
-    "title": "Nuevo 13",
-    "description": "Nuevo Producto 13.",
-    "price": 15.99,
-    "status": true,
-    "img": "https://example.com/images/nuevo-13.jpg",
-    "code": "NEW-013",
-    "stock": 280,
-    "category": "Nuevos"
-  },
-  {
     "id": 15,
     "title": "Nuevo 15",
     "description": "Nuevo Producto 15",
@@ -140,6 +129,72 @@
     "img": "sin imagen",
     "code": "NEW-015",
     "stock": "4",
+    "category": "Nuevos"
+  },
+  {
+    "id": 17,
+    "title": "NUEVO 17",
+    "description": "Nuevo Producto 17",
+    "price": "625",
+    "status": true,
+    "img": "sin imagen",
+    "code": "NEW-017",
+    "stock": "32",
+    "category": "Nuevos"
+  },
+  {
+    "id": 20,
+    "title": "NUEVO 20",
+    "description": " Nuevo Producto 20",
+    "price": "125",
+    "status": true,
+    "img": "sin imagen",
+    "code": "NEW-020",
+    "stock": "6",
+    "category": "Nuevos"
+  },
+  {
+    "id": 21,
+    "title": "NUEVO 21",
+    "description": " Nuevo Producto 21",
+    "price": "108",
+    "status": true,
+    "img": "sin imagen",
+    "code": "NEW-021",
+    "stock": "4",
+    "category": "Nuevos"
+  },
+  {
+    "id": 22,
+    "title": "NUEVO 22",
+    "description": " Nuevo Producto 22",
+    "price": "178",
+    "status": true,
+    "img": "sin imagen",
+    "code": "NEW-022",
+    "stock": "47",
+    "category": "Nuevos"
+  },
+  {
+    "id": 23,
+    "title": "NUEVO 23",
+    "description": "Nuevo Producto 23",
+    "price": "68",
+    "status": true,
+    "img": "sin imagen",
+    "code": "NEW-023",
+    "stock": "7",
+    "category": "Nuevos"
+  },
+  {
+    "id": 24,
+    "title": "NUEVO 24",
+    "description": "Nuevo Producto 24",
+    "price": "951",
+    "status": true,
+    "img": "sin imagen",
+    "code": "NEW-024",
+    "stock": "1",
     "category": "Nuevos"
   }
 ]
