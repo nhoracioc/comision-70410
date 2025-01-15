@@ -130,5 +130,16 @@
     "code": "NEW-013",
     "stock": 280,
     "category": "Nuevos"
+  },
+  {
+    "id": 15,
+    "title": "Nuevo 15",
+    "description": "Nuevo Producto 15",
+    "price": "74.25",
+    "status": true,
+    "img": "sin imagen",
+    "code": "NEW-015",
+    "stock": "4",
+    "category": "Nuevos"
   }
 ]

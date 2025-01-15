@@ -1,7 +1,7 @@
 import {promises as fs} from "fs";
 
 class ProductManager {
-    static ultId = 13; 
+    static ultId = 15; 
     constructor(path) {
         this.products = []; 
         this.path = path; 
