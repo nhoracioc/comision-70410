@@ -18,7 +18,7 @@ const cartSchema = new mongoose.Schema({
 
 // Middleware que realiza la población automáticamente, con id, titulo y precio
 cartSchema.pre('findOne', function (next) {
-  this.populate('products.product', 'id title description Price code stock category status');
+  this.populate('products.product', 'id title description price code stock category status');
   next();
 });
 

@@ -1,11 +1,10 @@
 import ProductModel from "../models/product.model.js";
 
 class ProductManager {
-
-    async addProduct({ title, description, price, img, code, stock, category, thumbnails }) {
+    async addProduct({ title, description, price, status, img, code, stock, category, thumbnails }) {
         try {
 
-            if (!title || !description || !price || !code || !stock || !category) {
+            if (!title || !description || !price || !status || !code || !stock || !category) {
                 console.log("Todos los campos son obligatorios");
                 return;
             }
